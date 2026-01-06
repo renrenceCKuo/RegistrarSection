@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教務處註冊組 - 學籍管理</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .tab-btn.active {
+            color: #2563eb; /* blue-600 */
+            border-bottom: 2px solid #2563eb;
+            background-color: #eff6ff; /* blue-50 */
+        }
+        .content-section {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .content-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Sidebar active link style */
+        .sidebar-link.active {
+            background-color: #bfdbfe; /* blue-200 */
+            color: #1e40af; /* blue-800 */
+            border-left: 4px solid #1e3a8a; /* blue-900 */
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-blue-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold flex items-center">
+                        <i class="fa-solid fa-school mr-3"></i>教務處
+                    </h1>
+                    <p class="text-blue-200 mt-1 text-sm md:text-base pl-10">註冊組服務資訊網</p>
+                </div>
+                <button class="md:hidden text-white text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout Container -->
+    <div class="flex-grow container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
+
+        <!-- Left Sidebar Navigation -->
+        <aside class="w-full md:w-64 flex-shrink-0">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden sticky top-4">
+                <div class="bg-gray-100 p-4 border-b border-gray-200">
+                    <h3 class="font-bold text-gray-700"><i class="fa-solid fa-list-ul mr-2"></i>業務選單</h3>
+                </div>
+                <nav class="flex flex-col">
+                    <a href="https://www.ccjhs.ntpc.edu.tw/" target="_blank" class="sidebar-link px-6 py-4 border-b border-gray-100 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center text-gray-600">
+                        <i class="fa-solid fa-user-plus w-6 text-center mr-2"></i> 新生入學 <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs opacity-50"></i>
+                    </a>
+                    <a href="transfer_process.html" class="sidebar-link active px-6 py-4 border-b border-gray-100 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center text-gray-600">
+                        <i class="fa-solid fa-id-card w-6 text-center mr-2"></i> 學籍管理
+                    </a>
+                    <a href="grade_processing.html" class="sidebar-link px-6 py-4 border-b border-gray-100 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center text-gray-600">
+                        <i class="fa-solid fa-chart-bar w-6 text-center mr-2"></i> 成績處理
+                    </a>
+                    <a href="scholarships.html" class="sidebar-link px-6 py-4 border-b border-gray-100 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center text-gray-600">
+                        <i class="fa-solid fa-sack-dollar w-6 text-center mr-2"></i> 獎助學金
+                    </a>
+                    <a href="certificates.html" class="sidebar-link px-6 py-4 border-b border-gray-100 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center text-gray-600">
+                        <i class="fa-solid fa-file-contract w-6 text-center mr-2"></i> 證明文件核發
+                    </a>
+                    <a href="https://sites.google.com/apps.ntpc.edu.tw/zzjhsreg2024/%E9%A6%96%E9%A0%81" target="_blank" class="sidebar-link px-6 py-4 hover:bg-blue-50 hover:text-blue-700 transition-colors flex items-center text-gray-600">
+                        <i class="fa-solid fa-graduation-cap w-6 text-center mr-2"></i> 升學資訊網
+                    </a>
+                </nav>
+            </div>
+            
+            <!-- Contact Info Box -->
+            <div class="bg-blue-50 rounded-lg shadow-sm p-4 mt-6 border border-blue-100 hidden md:block">
+                <h4 class="font-bold text-blue-800 mb-2 text-sm">聯絡資訊</h4>
+                <p class="text-xs text-blue-900 mb-1"><i class="fa-solid fa-phone mr-1"></i> (02)2262-8456#813、826</p>
+                <p class="text-xs text-blue-900"><i class="fa-solid fa-clock mr-1"></i> 週一至週五 8:00-16:00</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1">
+            
+            <div class="mb-6">
+                <!-- Added ICON to title for consistency -->
+                <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+                    <i class="fa-solid fa-arrow-right-arrow-left mr-3 text-blue-700"></i>轉學相關文件與流程
+                </h2>
+                <div class="h-1 w-20 bg-blue-600 mt-2 rounded"></div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="bg-white rounded-t-lg shadow-sm border-b border-gray-200 flex flex-wrap text-sm font-medium text-center text-gray-500">
+                <button onclick="switchTab('transfer-in')" id="btn-transfer-in" class="tab-btn w-1/3 py-4 hover:text-blue-600 hover:bg-gray-50 rounded-tl-lg active flex items-center justify-center gap-2 transition-all">
+                    <i class="fa-solid fa-file-import text-lg"></i>
+                    <span class="text-base">轉入流程</span>
+                </button>
+                <button onclick="switchTab('transfer-out')" id="btn-transfer-out" class="tab-btn w-1/3 py-4 hover:text-blue-600 hover:bg-gray-50 flex items-center justify-center gap-2 transition-all">
+                    <i class="fa-solid fa-file-export text-lg"></i>
+                    <span class="text-base">轉出流程</span>
+                </button>
+                <button onclick="switchTab('downloads')" id="btn-downloads" class="tab-btn w-1/3 py-4 hover:text-blue-600 hover:bg-gray-50 rounded-tr-lg flex items-center justify-center gap-2 transition-all">
+                    <i class="fa-solid fa-cloud-arrow-down text-lg"></i>
+                    <span class="text-base">文件下載</span>
+                </button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="bg-white rounded-b-lg shadow-md p-6 md:p-10 min-h-[400px]">
+
+                <!-- SECTION 1: 轉入 (Transfer In) -->
+                <div id="transfer-in" class="content-section active">
+                    <div class="flex items-center mb-6 border-l-4 border-blue-500 pl-4">
+                        <h2 class="text-xl font-bold text-gray-800">轉入本校辦理須知</h2>
+                    </div>
+                    
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <!-- Steps -->
+                        <div>
+                            <h3 class="text-lg font-semibold text-blue-700 mb-3"><i class="fa-solid fa-list-check mr-2"></i>辦理步驟</h3>
+                            <ol class="relative border-l border-gray-200 ml-3">                  
+                                <li class="mb-6 ml-6">
+                                    <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
+                                        <span class="text-blue-800 font-bold text-sm">1</span>
+                                    </span>
+                                    <h4 class="font-medium leading-tight text-gray-900">戶籍遷入</h4>
+                                    <p class="text-sm text-gray-600">請先確認戶籍已遷入本校學區。</p>
+                                </li>
+                                <li class="mb-6 ml-6">
+                                    <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
+                                        <span class="text-blue-800 font-bold text-sm">2</span>
+                                    </span>
+                                    <h4 class="font-medium leading-tight text-gray-900">原校申請轉出</h4>
+                                    <p class="text-sm text-gray-600">至原就讀學校辦理轉出，取得轉學證明書。</p>
+                                </li>
+                                <li class="ml-6">
+                                    <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white">
+                                        <span class="text-blue-800 font-bold text-sm">3</span>
+                                    </span>
+                                    <h4 class="font-medium leading-tight text-gray-900">本校報到</h4>
+                                    <p class="text-sm text-gray-600">攜帶相關文件至本校教務處註冊組辦理。</p>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <!-- Documents -->
+                        <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                            <h3 class="text-lg font-semibold text-blue-800 mb-4"><i class="fa-solid fa-folder-open mr-2"></i>必備文件</h3>
+                            <ul class="space-y-3 text-sm md:text-base">
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i>
+                                    <span class="text-gray-700"><strong>原校轉學證明書</strong></span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i>
+                                    <span class="text-gray-700"><strong>戶口名簿正本</strong><br><span class="text-xs text-gray-500">(需含詳細記事，查驗後發還)</span></span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i>
+                                    <span class="text-gray-700"><strong>父母或監護人身分證及印章</strong></span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i>
+                                    <span class="text-gray-700"><strong>大頭照電子檔或照片</strong><br><span class="text-xs text-gray-500">(製作學生證及學籍資料用，約 1-2 張)</span></span>
+                                </li>
+                                 <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i>
+                                    <span class="text-gray-700"><strong>健康相關資料</strong><br><span class="text-xs text-gray-500">(健康紀錄卡、疫苗接種卡影本，通常原校會隨轉學證明轉交)</span></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: 轉出 (Transfer Out) -->
+                <div id="transfer-out" class="content-section">
+                    <div class="flex items-center mb-6 border-l-4 border-orange-500 pl-4">
+                        <h2 class="text-xl font-bold text-gray-800">轉出本校辦理須知</h2>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-8">
+                         <!-- Steps -->
+                         <div>
+                            <h3 class="text-lg font-semibold text-orange-700 mb-3"><i class="fa-solid fa-route mr-2"></i>辦理步驟</h3>
+                            <ol class="relative border-l border-gray-200 ml-3">                  
+                                <li class="mb-6 ml-6">
+                                    <span class="absolute flex items-center justify-center w-6 h-6 bg-orange-100 rounded-full -left-3 ring-8 ring-white">
+                                        <span class="text-orange-800 font-bold text-sm">1</span>
+                                    </span>
+                                    <h4 class="font-medium leading-tight text-gray-900">戶籍遷出</h4>
+                                    <p class="text-sm text-gray-600">確認戶籍已遷移至新學校學區。</p>
+                                </li>
+                                <li class="mb-6 ml-6">
+                                    <span class="absolute flex items-center justify-center w-6 h-6 bg-orange-100 rounded-full -left-3 ring-8 ring-white">
+                                        <span class="text-orange-800 font-bold text-sm">2</span>
+                                    </span>
+                                    <h4 class="font-medium leading-tight text-gray-900">告知導師</h4>
+                                    <p class="text-sm text-gray-600">向班級導師聯繫，確認轉出意願。</p>
+                                </li>
+                                <li class="mb-6 ml-6">
+                                    <span class="absolute flex items-center justify-center w-6 h-6 bg-orange-100 rounded-full -left-3 ring-8 ring-white">
+                                        <span class="text-orange-800 font-bold text-sm">3</span>
+                                    </span>
+                                    <h4 class="font-medium leading-tight text-gray-900">校內離校手續</h4>
+                                    <p class="text-sm text-gray-600">歸還圖書、結清午餐費、教科書等費用。</p>
+                                </li>
+                                <li class="ml-6">
+                                    <span class="absolute flex items-center justify-center w-6 h-6 bg-orange-100 rounded-full -left-3 ring-8 ring-white">
+                                        <span class="text-orange-800 font-bold text-sm">4</span>
+                                    </span>
+                                    <h4 class="font-medium leading-tight text-gray-900">領證與報到</h4>
+                                    <p class="text-sm text-gray-600">至註冊組領取轉學證明書，並於3日內至新學校報到。</p>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <!-- Documents -->
+                        <div class="bg-orange-50 p-6 rounded-lg border border-orange-100">
+                            <h3 class="text-lg font-semibold text-orange-800 mb-4"><i class="fa-solid fa-briefcase mr-2"></i>攜帶文件</h3>
+                            <ul class="space-y-3 text-sm md:text-base">
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i>
+                                    <span class="text-gray-700"><strong>戶口名簿正本</strong><br><span class="text-xs text-gray-500">(需顯示已遷出本校學區)</span></span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i>
+                                    <span class="text-gray-700"><strong>父母或監護人身分證及印章</strong></span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i>
+                                    <span class="text-gray-700"><strong>學生證</strong><br><span class="text-xs text-gray-500">(繳回或註記失效)</span></span>
+                                </li>
+                                 <li class="flex items-start">
+                                    <i class="fa-solid fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i>
+                                    <span class="text-gray-700"><strong>大頭照 2 張</strong><br><span class="text-xs text-gray-500">(製作轉學證明書使用)</span></span>
+                                </li>
+                            </ul>
+                            <div class="mt-4 p-3 bg-white rounded border border-orange-200">
+                                <p class="text-xs md:text-sm text-orange-800"><i class="fa-solid fa-triangle-exclamation mr-1"></i> <strong>注意：</strong> 若父母無法親自辦理，須填寫委託書。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: 文件下載 (Downloads) -->
+                <div id="downloads" class="content-section">
+                    <div class="flex items-center mb-6 border-l-4 border-emerald-500 pl-4">
+                        <h2 class="text-xl font-bold text-gray-800">相關表格下載</h2>
+                    </div>
+
+                    <div class="grid gap-4">
+                        <!-- File Item 1 -->
+                        <div class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600 mr-4 flex-shrink-0">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-gray-900">轉入學申請書.pdf</h3>
+                                    <p class="text-xs text-gray-500">更新日期：2023-09-01 | 檔案大小：156KB</p>
+                                </div>
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-800 px-3 py-2 text-sm font-medium border border-blue-200 rounded hover:bg-blue-50 transition-colors whitespace-nowrap">
+                                <i class="fa-solid fa-download mr-1"></i> 下載
+                            </button>
+                        </div>
+
+                        <!-- File Item 2 -->
+                        <div class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 mr-4 flex-shrink-0">
+                                    <i class="fa-solid fa-file-word"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-gray-900">轉出申請表與離校手續單.doc</h3>
+                                    <p class="text-xs text-gray-500">更新日期：2023-09-01 | 檔案大小：85KB</p>
+                                </div>
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-800 px-3 py-2 text-sm font-medium border border-blue-200 rounded hover:bg-blue-50 transition-colors whitespace-nowrap">
+                                <i class="fa-solid fa-download mr-1"></i> 下載
+                            </button>
+                        </div>
+
+                        <!-- File Item 3 -->
+                        <div class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600 mr-4 flex-shrink-0">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-gray-900">委託書(家長無法親自辦理時使用).pdf</h3>
+                                    <p class="text-xs text-gray-500">更新日期：2023-01-15 | 檔案大小：120KB</p>
+                                </div>
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-800 px-3 py-2 text-sm font-medium border border-blue-200 rounded hover:bg-blue-50 transition-colors whitespace-nowrap">
+                                <i class="fa-solid fa-download mr-1"></i> 下載
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p class="mb-2">如有任何疑問，請洽教務處註冊組</p>
+            <p>&copy; 2026 中正國民中學 | 網頁設計：C.Kuo | 版本：Ver1.0</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            // Hide all content sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Deactivate all tabs
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show specific content section
+            document.getElementById(tabId).classList.add('active');
+            
+            // Activate specific tab button
+            document.getElementById('btn-' + tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
